@@ -1,0 +1,79 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+
+struct Node {
+    int data;
+    struct Node* next;
+};
+
+int main() {
+    struct Node *start = NULL, *temp = NULL, *newNode,*slow,*fast;
+    int n, i, value;
+
+    printf("Enter number of elements: ");
+    scanf("%d", &n);
+
+    for(i = 1; i <= n; i++) {
+        
+        newNode = (struct Node*)malloc(sizeof(struct Node));
+
+        printf("Enter data for node %d: ", i);
+        scanf("%d", &value);
+
+        newNode->data = value;
+        newNode->next = NULL;
+
+        if(start == NULL) {
+            start = newNode;   
+            temp = newNode;
+        } else {
+            temp->next = newNode; 
+            temp = newNode;
+        }
+    }
+
+    int d=0;
+     temp = start;
+     fast=start;
+     slow=start;
+     do
+     {
+        if(n%2==0)
+        {
+        if(fast==NULL)
+        {
+        ++d;
+        break;
+        }
+        }
+        else
+        {
+            if(fast->next==NULL)
+        {
+        ++d;
+        break;
+        }
+        }
+        fast=fast->next->next;
+        slow=slow->next;
+        
+     }while(fast!=slow);
+     
+     if(d!=0)
+     {
+     printf("\nTheres is no loop in the link list");
+     }
+     
+     
+     while(temp != NULL) {
+        printf("%d -> ", temp->data);
+        temp = temp->next;
+    }
+    
+     printf("NULL");
+     
+   
+
+    return 0;
+}
