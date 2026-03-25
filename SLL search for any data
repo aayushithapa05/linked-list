@@ -1,0 +1,70 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+
+struct Node {
+    int data;
+    struct Node* next;
+};
+
+int main() {
+    struct Node *start = NULL, *temp = NULL, *newNode,*titu;
+    int n, i, value;
+
+    printf("Enter number of elements: ");
+    scanf("%d", &n);
+
+    for(i = 1; i <= n; i++) {
+        
+        newNode = (struct Node*)malloc(sizeof(struct Node));
+
+        printf("Enter data for node %d: ", i);
+        scanf("%d", &value);
+
+        newNode->data = value;
+        newNode->next = NULL;
+
+        if(start == NULL) {
+            start = newNode;   
+            temp = newNode;
+        } else {
+            temp->next = newNode; 
+            temp = newNode;
+        }
+    }
+
+   
+     temp = start;
+     int d;
+     int c=0;
+     
+     printf("Enter the data  to be searched:");
+     scanf("%d",&d);
+     while(temp != NULL)
+     {
+         if(temp->data==d)
+         {
+             printf("Search sucess ");
+             c=c+1;
+             break;
+             
+         }
+         temp=temp->next;
+     }
+     temp=start;
+     if(c==0)
+     {
+         printf("Search Unsucess");
+     }
+    
+     while(temp != NULL) {
+        printf("%d -> ", temp->data);
+        temp = temp->next;
+    }
+    
+     printf("NULL");
+     
+   
+
+    return 0;
+}
