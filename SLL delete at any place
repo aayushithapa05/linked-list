@@ -1,0 +1,63 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+
+struct Node {
+    int data;
+    struct Node* next;
+};
+
+int main() {
+    struct Node *start = NULL, *temp = NULL, *newNode,*t2;
+    int n, i, value;
+
+    printf("Enter number of elements: ");
+    scanf("%d", &n);
+
+    for(i = 1; i <= n; i++) {
+        
+        newNode = (struct Node*)malloc(sizeof(struct Node));
+
+        printf("Enter data for node %d: ", i);
+        scanf("%d", &value);
+
+        newNode->data = value;
+        newNode->next = NULL;
+
+        if(start == NULL) {
+            start = newNode;   
+            temp = newNode;
+        } else {
+            temp->next = newNode; 
+            temp = newNode;
+        }
+    }
+
+   
+     temp = start;
+     int pos;
+     int c=1;
+     printf("Enter the position to be deleted:");
+     scanf("%d",&pos);
+     while(c!=pos-1)
+     {
+         c=c+1;
+         temp=temp->next;
+     }
+     t2=temp->next;
+     temp->next=t2->next;
+     free(t2);
+     temp=start;
+     
+     
+     while(temp != NULL) {
+        printf("%d -> ", temp->data);
+        temp = temp->next;
+    }
+    
+     printf("NULL");
+     
+   
+
+    return 0;
+}
