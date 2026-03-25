@@ -1,0 +1,55 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+// Structure of node
+struct Node {
+    int data;
+    struct Node* next;
+};
+
+int main() {
+    struct Node *start = NULL, *temp = NULL, *newNode;
+    int n, i, value;
+
+    printf("Enter number of elements: ");
+    scanf("%d", &n);
+
+    for(i = 1; i <= n; i++) {
+        // Allocate memory for new node
+        newNode = (struct Node*)malloc(sizeof(struct Node));
+
+        printf("Enter data for node %d: ", i);
+        scanf("%d", &value);
+
+        newNode->data = value;
+        newNode->next = NULL;
+
+        if(start == NULL) {
+            start = newNode;   // First node
+            temp = newNode;
+        } else {
+            temp->next = newNode;  // Link new node
+            temp = newNode;
+        }
+    }
+
+   
+     temp = start;
+     newNode = (struct Node*)malloc(sizeof(struct Node));
+     printf("Enter the data to be inserted at the data ");
+     scanf("%d",&value);
+     newNode->data = value;
+     newNode->next = NULL;
+     newNode->next=start;
+     start=newNode;
+     temp=newNode;
+     while(temp != NULL) {
+        printf("%d -> ", temp->data);
+        temp = temp->next;
+    }
+     printf("NULL");
+     
+   
+
+    return 0;
+}
